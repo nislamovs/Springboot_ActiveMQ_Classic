@@ -1,0 +1,22 @@
+Implement:
+
+- msg Producer
+  -- cassandra
+  -- r2dbc
+  -- webflux
+  -- webflux tests
+  -- swagger (openapi v3)
+
+- discord consumer
+- telegram consumer
+- facebook consumer
+- soap apache cxf microservice
+
+- mqtt server - consumer (docker + fat UI)
+
+- activemq docker
+- cassandra docker
+- prometheus docker
+- grafana docker
+
+-- load queues from file (all settings)

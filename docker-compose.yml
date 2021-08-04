@@ -1,0 +1,139 @@
+version: '3'
+
+services:
+
+  activemq:
+    container_name: "activemq"
+    hostname: localhost
+    user: root
+    build:
+      context: ./activemq_docker/
+      dockerfile: Dockerfile
+#    volumes:
+#      - "./.docker/rabbitmq/volumes/etc/:/etc/rabbitmq/"
+#      - "./.docker/rabbitmq/volumes/data/:/var/lib/rabbitmq/"
+#      - "./.docker/rabbitmq/volumes/logs/:/var/log/rabbitmq/"
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+      - "15692:15692"
+
+  msg_producer:
+    container_name: "msg_producer"
+    hostname: localhost
+    build:
+      context: ./msgProducer/
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    volumes:
+      - "./.docker/msgProducer/volumes/logs:/logs"
+    depends_on:
+      - activemq
+
+  telegram_consumer:
+    container_name: "telegram_consumer"
+    hostname: localhost
+    build:
+      context: ./telegramConsumer/
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8080"
+    environment:
+      SLACK_URL: ${SLACK_URL}
+    volumes:
+      - "./.docker/telegramConsumer/volumes/logs:/logs"
+    depends_on:
+      - activemq
+
+  discord_consumer:
+    container_name: "discord_consumer"
+    hostname: localhost
+    build:
+      context: ./discordConsumer/
+      dockerfile: Dockerfile
+    ports:
+      - "8084:8080"
+    environment:
+      VONAGE_API_KEY: ${VONAGE_API_KEY}
+      VONAGE_API_SECRET: ${VONAGE_API_SECRET}
+      VONAGE_PHONE_NUMBER: ${VONAGE_PHONE_NUMBER}
+    volumes:
+      - "./.docker/smsConsumer/volumes/logs:/logs"
+    depends_on:
+      - activemq
+
+  facebook_consumer:
+    container_name: "facebook_consumer"
+    hostname: localhost
+    build:
+      context: ./facebookConsumer/
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8080"
+    environment:
+      - MAILTRAP_USERNAME=${MAILTRAP_USERNAME}
+      - MAILTRAP_PASSWORD=${MAILTRAP_PASSWORD}
+    volumes:
+      - "./.docker/facebookConsumer/volumes/logs:/logs"
+    depends_on:
+      - activemq
+
+  soap_mcs_consumer:
+    container_name: "soap_mcs_consumer"
+    hostname: localhost
+    build:
+      context: ./facebookConsumer/
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8080"
+    environment:
+      - MAILTRAP_USERNAME=${MAILTRAP_USERNAME}
+      - MAILTRAP_PASSWORD=${MAILTRAP_PASSWORD}
+    volumes:
+      - "./.docker/facebookConsumer/volumes/logs:/logs"
+    depends_on:
+      - activemq
+
+  mqtt-server-consumer:
+    container_name: "mqtt-server-consumer"
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    environment:
+      GF_SERVER_ROOT_URL: http://localhost:3000
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: secret
+    depends_on:
+      - activemq
+
+  prometheus:
+    container_name: "prometheus"
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    command:
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+    environment:
+      GF_SERVER_ROOT_URL: http://localhost:3000
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: secret
+    depends_on:
+      - activemq
+
+  grafana:
+    container_name: "grafana"
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./.docker/grafana/grafana-storage:/var/lib/grafana
+      - ./.docker/grafana/provisioning/:/etc/grafana/provisioning
+    environment:
+      GF_SERVER_ROOT_URL: http://localhost:3000
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: secret
+    depends_on:
+      - activemq

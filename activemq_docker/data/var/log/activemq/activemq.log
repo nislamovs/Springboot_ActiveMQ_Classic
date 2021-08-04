@@ -1,0 +1,27 @@
+2021-08-04 09:58:46,904 | INFO  | Refreshing org.apache.activemq.xbean.XBeanBrokerFactory$1@7823a2f9: startup date [Wed Aug 04 09:58:46 CST 2021]; root of context hierarchy | org.apache.activemq.xbean.XBeanBrokerFactory$1 | main
+2021-08-04 09:58:47,433 | INFO  | Using Persistence Adapter: KahaDBPersistenceAdapter[/data/activemq/kahadb] | org.apache.activemq.broker.BrokerService | main
+2021-08-04 09:58:47,632 | INFO  | PListStore:[/data/activemq/localhost/tmp_storage] started | org.apache.activemq.store.kahadb.plist.PListStoreImpl | main
+2021-08-04 09:58:47,808 | INFO  | JobSchedulerStore: /data/activemq/localhost/scheduler started. | org.apache.activemq.store.kahadb.scheduler.JobSchedulerStoreImpl | main
+2021-08-04 09:58:47,984 | INFO  | Apache ActiveMQ 5.14.3 (localhost, ID:5c276c13452d-37073-1628042327838-0:1) is starting | org.apache.activemq.broker.BrokerService | main
+2021-08-04 09:58:48,003 | INFO  | Listening for connections at: tcp://5c276c13452d:61616?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2021-08-04 09:58:48,004 | INFO  | Connector openwire started | org.apache.activemq.broker.TransportConnector | main
+2021-08-04 09:58:48,006 | INFO  | Listening for connections at: amqp://5c276c13452d:5672?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2021-08-04 09:58:48,007 | INFO  | Connector amqp started | org.apache.activemq.broker.TransportConnector | main
+2021-08-04 09:58:48,010 | INFO  | Listening for connections at: stomp://5c276c13452d:61613?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2021-08-04 09:58:48,012 | INFO  | Connector stomp started | org.apache.activemq.broker.TransportConnector | main
+2021-08-04 09:58:48,014 | INFO  | Listening for connections at: mqtt://5c276c13452d:1883?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.TransportServerThreadSupport | main
+2021-08-04 09:58:48,015 | INFO  | Connector mqtt started | org.apache.activemq.broker.TransportConnector | main
+2021-08-04 09:58:48,085 | WARN  | ServletContext@o.e.j.s.ServletContextHandler@7b8b43c7{/,null,STARTING} has uncovered http methods for path: / | org.eclipse.jetty.security.SecurityHandler | main
+2021-08-04 09:58:48,134 | INFO  | Listening for connections at ws://5c276c13452d:61614?maximumConnections=1000&wireFormat.maxFrameSize=104857600 | org.apache.activemq.transport.ws.WSTransportServer | main
+2021-08-04 09:58:48,135 | INFO  | Connector ws started | org.apache.activemq.broker.TransportConnector | main
+2021-08-04 09:58:48,135 | INFO  | Apache ActiveMQ 5.14.3 (localhost, ID:5c276c13452d-37073-1628042327838-0:1) started | org.apache.activemq.broker.BrokerService | main
+2021-08-04 09:58:48,136 | INFO  | For help or more information please see: http://activemq.apache.org | org.apache.activemq.broker.BrokerService | main
+2021-08-04 09:58:48,137 | WARN  | Store limit is 102400 mb (current store usage is 0 mb). The data directory: /data/activemq/kahadb only has 58449 mb of usable space. - resetting to maximum available disk space: 58449 mb | org.apache.activemq.broker.BrokerService | main
+2021-08-04 09:58:48,406 | INFO  | No Spring WebApplicationInitializer types detected on classpath | /admin | main
+2021-08-04 09:58:48,674 | INFO  | ActiveMQ WebConsole available at http://0.0.0.0:8161/ | org.apache.activemq.web.WebConsoleStarter | main
+2021-08-04 09:58:48,674 | INFO  | ActiveMQ Jolokia REST API available at http://0.0.0.0:8161/api/jolokia/ | org.apache.activemq.web.WebConsoleStarter | main
+2021-08-04 09:58:48,708 | INFO  | Initializing Spring FrameworkServlet 'dispatcher' | /admin | main
+2021-08-04 09:58:48,896 | INFO  | No Spring WebApplicationInitializer types detected on classpath | /api | main
+2021-08-04 09:58:48,927 | INFO  | jolokia-agent: Using policy access restrictor classpath:/jolokia-access.xml | /api | main
+2021-08-04 09:59:14,053 | WARN  | Transport Connection to: tcp://192.168.96.1:49296 failed: java.io.IOException: Frame size of 1 GB larger than max allowed 100 MB | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///192.168.96.1:49296@61616
+2021-08-04 09:59:14,080 | WARN  | Transport Connection to: tcp://192.168.96.1:49302 failed: java.io.IOException: Frame size of 1 GB larger than max allowed 100 MB | org.apache.activemq.broker.TransportConnection.Transport | ActiveMQ Transport: tcp:///192.168.96.1:49302@61616
