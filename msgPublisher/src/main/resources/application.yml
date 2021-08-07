@@ -1,1 +1,12 @@
+server:
+  port: 8080
+
+spring:
+  data:
+    cassandra:
+      keyspace-name: messages
+      port: 9042
+      contact-points: 127.0.0.1:${port}
+      schema-action: create_if_not_exists
+
 

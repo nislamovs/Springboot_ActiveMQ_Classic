@@ -19,7 +19,7 @@ apply plugin: 'org.springframework.boot'
 
 wrapper {
 	distributionType = Wrapper.DistributionType.ALL
-	gradleVersion = '6.8.1'
+	gradleVersion = '7.1.1'
 }
 
 configurations {
@@ -35,9 +35,15 @@ repositories {
 mainClassName = 'TelegramConsumerApplication'
 
 dependencies {
+	implementation "org.springframework.boot:spring-boot-starter"
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	compileOnly 'org.projectlombok:lombok'
-	annotationProcessor 'org.projectlombok:lombok'
+
+	compileOnly 'org.projectlombok:lombok:1.18.20'
+	annotationProcessor 'org.projectlombok:lombok:1.18.20'
+
+	implementation 'com.github.pengrad:java-telegram-bot-api:5.2.0'
+
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

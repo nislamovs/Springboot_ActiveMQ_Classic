@@ -2,15 +2,31 @@ Implement:
 
 - msg Producer
   -- cassandra
-  -- r2dbc
+  -- r2dbc ?
   -- webflux
   -- webflux tests
   -- swagger (openapi v3)
 
-- discord consumer
-- telegram consumer
-- facebook consumer
-- soap apache cxf microservice
+--cassandra features to use:
+  joins
+  pagination
+  filtering
+  grouping, sorting
+  reactive repos
+  enums in entities
+  audit
+  crud operations
+  migration tools (cqlmigrate) https://github.com/sky-uk/cqlmigrate
+
+- consumers must publish and consume messages
+
+- discord consumer (discord4j)
+- telegram consumer (telegram-api lib)
+- facebook consumer (messenger4j)
+- slack consumer (retrofit 2 http client)
+- jabber (smack lib)
+- skype (skype4j)
+- soap apache cxf microservice -> also try to use mongo with morphia
 
 - mqtt server - consumer (docker + fat UI)
 
@@ -20,3 +36,8 @@ Implement:
 - grafana docker
 
 -- load queues from file (all settings)
+
+use rest endpoints with swagger open api
+use functional webflux endpoints with swagger open api
+
+write tests where possible
