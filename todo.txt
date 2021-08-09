@@ -7,6 +7,8 @@ Implement:
   -- webflux tests
   -- swagger (openapi v3)
 
+- security (spring-security, jwt)
+
 --cassandra features to use:
   joins
   pagination
