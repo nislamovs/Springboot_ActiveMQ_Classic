@@ -5,9 +5,9 @@ Implement:
   -- r2dbc ?
   -- webflux
   -- webflux tests
-  -- swagger (openapi v3)
+  -- swagger (openapi v3) + examples
 
-- security (spring-security, jwt)
+- security (spring-security, jwt) for webflux
 
 --cassandra features to use:
   joins
